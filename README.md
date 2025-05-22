@@ -1,5 +1,5 @@
 # AUD-CMA-v2
-Drag-and-Carry Multiplication Algorithm v2
+🔢 Drag-and-Carry Multiplication Algorithm v2
 
 The Ahmet Ulucay Drag-and-Carry Multiplication Algorithm (AUD&CMA v2) introduces a novel approach to digit-wise multiplication by combining structured positional padding, convolution-like window sliding, and a specialized right-to-left carry mechanism. Unlike traditional methods that rely on place value decomposition or lattice grids, AUD&CMA v2 applies a reversed-digit kernel (from the multiplier) over the padded multiplicand, computing localized dot-products across digit windows.
 
