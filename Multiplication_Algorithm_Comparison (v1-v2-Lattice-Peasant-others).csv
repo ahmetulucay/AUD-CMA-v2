@@ -1,0 +1,13 @@
+Feature / Method,Traditional Multiplication,AUD&CMA v1,AUD&CMA v2,Lattice Multiplication,Russian Peasant Multiplication
+Approach,Positional (row-wise product),Positional + convolution-style drag & carry,Sliding window convolution + drag & carry,Grid-based with diagonal summation,Doubling and halving with conditional addition
+Carry Direction,Right → Left,Right → Left (with preserved leftmost),Right → Left (with preserved leftmost),Right → Left (diagonally),Top-down calculation
+Preserve Leftmost Digit,No,Yes,Yes,No,No
+Use of Zero Padding,No,Yes (k-1 zeros on each side),"Yes (k-1 zeros on each side, used as sliding window)",No,No
+Number Format Handling,Full multiplication,"Repetitive/mirror-like numbers (11, 111, 222, etc.)",Generalized base numbers (still with patterns),Any numbers,Any integers
+Output Composition,Full multi-digit result,Single digits with carry sum; leftmost untouched,"Convolution output per window, digit-wise adjustment","Digit-wise, summed through diagonals",Summed conditionally
+Algorithm Uniqueness,Common,Novel,Novel,Classic alternative method,Traditional method
+Mental Math Friendliness,Moderate,High (educational and visual aid),"High (mental patterning, abstraction)",Low,Moderate
+Suitable For,All general cases,"Mental math, educational visuals, limited hardware","Visualization, educational tools, pattern-based systems","Visualization, teaching multiplication",History and simplification of doubling
+Application in Embedded Systems,Complex,Efficient in low-power environments (no full mult logic),"Efficient; pattern-oriented, avoids full multi-logic",Inefficient,Very efficient
+Digit Carry Complexity,Standard,"Custom rule (carry sum to left, keep leftmost as-is)","Same as v1, but within sliding window scope",Medium,Simple logic
+Preserved Properties Across Versions,N/A,"Leftmost value preserved, carry limited",Same as v1 + convolution padding method,None,None
