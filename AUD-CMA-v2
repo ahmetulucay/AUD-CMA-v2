@@ -1,9 +1,9 @@
-Ahmet Ulucay Drag-and-Carry Multiplication Algorithm v2 (AUD&CMA v2)
+Ahmet Ulucay Drag-and-Carry Multiplication Algorithm v2 (AUD-CMA-v2)
 – Convolutional Form –
 
 🔹 Overview:
 
-AUD&CMA v2 is a digit-wise, convolution-based integer multiplication algorithm designed to simulate 
+AUD-CMA-v2 is a digit-wise, convolution-based integer multiplication algorithm designed to simulate 
 and enhance traditional multiplication using array sliding, dot-product logic, and a specialized 
 right-to-left drag-and-carry operation. It preserves the leftmost digit's full value during carry propagation, 
 providing a deterministic and unique computation path.
