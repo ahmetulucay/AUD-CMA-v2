@@ -1,39 +1,39 @@
-def audcma_v2(multiplicand: int, multiplier: int) -> int:
-    """
-    Ahmet Ulucay Drag-and-Carry Multiplication Algorithm v2
-    - Convolutional Form with right-to-left carry propagation.
-    - Preserves the leftmost digit in full.
-    """
-    # Step 1: Convert numbers to digit arrays
-    n_digits = list(map(int, str(multiplicand)))
-    m_digits = list(map(int, str(multiplier)))
+# Ahmet Ulucay Drag-and-Carry Multiplication Algorithm v2 (AUD-CMA-v2)
 
-    # Step 2: Reverse multiplier digits for convolution
-    m_digits.reverse()
-    k = len(m_digits)
+# This version:
 
-    # Step 3: Pad multiplicand with k-1 zeros on both sides
-    padding = [0] * (k - 1)
-    padded_n = padding + n_digits + padding
+# - Works for any input size thanks to Python’s int
+# - Ensures the last sliding window is not skipped
+# - Ensures Convolutional Form with right-to-left carry propagation
+# - Preserves the leftmost digit in full
+# - Uses a clean loop range:
+#     i in [k-1, len(padded)-(k-1)]
 
-    # Step 4: Slide window of size k and compute dot-products
-    dot_products = []
-    for i in range(len(padded_n) - k + 1):
-        window = padded_n[i:i+k]
-        dot = sum(window[j] * m_digits[j] for j in range(k))
-        dot_products.append(dot)
+def audcma_v2(n_str, b_str):
+    n = [int(d) for d in n_str]
+    b = [int(d) for d in b_str]
 
-    # Step 5: Apply drag-and-carry right to left
-    for i in range(len(dot_products) - 1, 0, -1):
-        carry = dot_products[i] // 10
-        dot_products[i] %= 10
-        dot_products[i - 1] += carry
+    k = len(b)
+    base_digit = b[0]
 
-    # Step 6: Convert final digit array to integer
-    result_str = ''.join(map(str, dot_products))
-    return int(result_str)
+    # Step 1: Multiply each digit of n by base_digit
+    result = [digit * base_digit for digit in n]
 
+    # Step 2: Pad with (k - 1) zeros on both sides
+    padded = [0] * (k - 1) + result + [0] * (k - 1)
 
-# Example
-if __name__ == "__main__":
-    print("AUD&CMA v2 Result for 5425 × 2431:", audcma_v2(5425, 2431))
+    # Step 3: Sliding window sum and carry from right to left
+    output = []
+    carry = 0
+    for i in range(len(padded) - 1, -1, -1):
+        window = padded[max(0, i - k + 1):i + 1]
+        window_sum = sum(window) + carry
+
+        if k - 1 <= i <= len(padded) - (k - 1):
+            output.append(window_sum % 10)
+            carry = window_sum // 10
+        elif i == k - 2:
+            output.append(window_sum)  # leftmost full value
+
+    output.reverse()
+    return int(''.join(map(str, output)))
