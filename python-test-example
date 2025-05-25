@@ -1,0 +1,11 @@
+from AUDCMA_v2 import audcma_v2
+
+n = "987654321987654321987654321987654321"
+b = "222222222"
+
+result = audcma_v2(n, b)
+print("Result:", result)
+
+
+C:\Users\au>C:/Users/au/AppData/Local/Programs/Python/Python312/python.exe c:/Users/au/Downloads/test_example.py
+Result: 21947873799999999999999999999999999972
