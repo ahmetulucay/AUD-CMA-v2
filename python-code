@@ -9,20 +9,20 @@
 # - Uses a clean loop range:
 #     i in [k-1, len(padded)-(k-1)]
 
-def audcma_v2(n_str, b_str):
+def audcma_v2(n_str, m_str):
     n = [int(d) for d in n_str]
-    b = [int(d) for d in b_str]
+    m = [int(d) for d in reversed(m_str)]  # Reverse the multiplier
 
-    k = len(b)
-    base_digit = b[0]
+    k = len(m)
 
-    # Step 1: Multiply each digit of n by base_digit
-    result = [digit * base_digit for digit in n]
+    # Step 1: Multiply each digit of n by reversed m[0]
+    base_digit = m[0]
+    result = [d * base_digit for d in n]
 
     # Step 2: Pad with (k - 1) zeros on both sides
     padded = [0] * (k - 1) + result + [0] * (k - 1)
 
-    # Step 3: Sliding window sum and carry from right to left
+    # Step 3: Sliding window convolution-style drag-and-carry
     output = []
     carry = 0
     for i in range(len(padded) - 1, -1, -1):
@@ -33,7 +33,7 @@ def audcma_v2(n_str, b_str):
             output.append(window_sum % 10)
             carry = window_sum // 10
         elif i == k - 2:
-            output.append(window_sum)  # leftmost full value
+            output.append(window_sum)
 
     output.reverse()
     return int(''.join(map(str, output)))
