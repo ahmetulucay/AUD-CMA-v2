@@ -1,6 +1,6 @@
-# AUD-CMA-v2 Ahmet Ulucay Drag-and-Carry Multiplication Algorithm (Version 2)
+# AUD-CMA-v2 Drag-and-Carry Multiplication Algorithm (Version 2)
 
-**AUD-CMA-v2** is a generalized digit-wise multiplication algorithm created by me, utilizing a **sliding-window convolution method** paired with a unique **drag-and-carry logic**. This version preserves the **leftmost digit** and supports **right-to-left carry propagation**, enabling flexible and efficient multiplication for any integer values.
+**AUD-CMA-v2** is a generalized digit-wise multiplication algorithm created by Ahmet Ulucay, utilizing a **sliding-window convolution method** paired with a unique **drag-and-carry logic**. This version preserves the **leftmost digit** and supports **right-to-left carry propagation**, enabling flexible and efficient multiplication for any integer values.
 
 ---
 
